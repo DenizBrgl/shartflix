@@ -1,0 +1,39 @@
+{
+  "login_title": "Hello",
+  "login_description": "Welcome to Shartflix! Start exploring now.",
+  "email": "Email",
+  "password": "Password",
+  "forgot_password": "Forgot password",
+  "login": "Login",
+  "no_account": "Don’t have an account?",
+  "sign_up": "Sign Up",
+
+  "signup_title": "Welcome",
+  "signup_button": "Sign Up Now",
+  "name": "Full Name",
+  "confirm_password": "Confirm Password",
+  "accept_terms": "I have read and accept the user agreement.",
+
+  "already_have_account": "Already have an account?",
+  "go_login": "Login!",
+
+  "add_profile_photo": "Upload Your Photo",
+  "continue": "Continue",
+  "profile_details": "Profile Details",
+
+  "explore": "Explore",
+  "home": "Home",
+  "profile": "Profile",
+
+  "liked_movies": "Liked Movies",
+  "edit_profile_photo": "Add Photo",
+
+  "limited_offer": "Limited Offer",
+  "bonus_info": "Select a token package to unlock bonuses and exclusive episodes!",
+  "your_bonuses": "Your Bonuses",
+  "premium_account": "Premium Account",
+  "more_fun": "More Fun",
+  "no_ads": "No Ads",
+  "more_likes": "More Likes",
+  "see_all_packages": "See All Tokens"
+}

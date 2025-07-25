@@ -1,0 +1,39 @@
+{
+  "login_title": "Hoşgeldiniz",
+  "login_description": "Shartflix'e hoş geldiniz! Şimdi keşfetmeye başlayın.",
+  "email": "E-Posta",
+  "password": "Şifre",
+  "forgot_password": "Şifremi unuttum",
+  "login": "Giriş Yap",
+  "no_account": "Bir hesabın yok mu?",
+  "sign_up": "Kayıt Ol",
+
+  "signup_title": "Merhabalar",
+  "signup_button": "Şimdi Kaydol",
+  "name": "Ad Soyad",
+  "confirm_password": "Şifre Tekrar",
+  "accept_terms": "Kullanıcı sözleşmesini okudum ve kabul ediyorum. Bu sözleşmeyi okuyarak devam ediniz lütfen.",
+
+  "already_have_account": "Zaten bir hesabınız var mı?",
+  "go_login": "Giriş Yap!",
+
+  "add_profile_photo": "Fotoğraflarınızı Yükleyin",
+  "continue": "Devam Et",
+  "profile_details": "Profil Detayı",
+
+  "explore": "Keşfet",
+  "home": "Anasayfa",
+  "profile": "Profil",
+
+  "liked_movies": "Beğendiğim Filmler",
+  "edit_profile_photo": "Fotoğraf Ekle",
+
+  "limited_offer": "Sınırlı Teklif",
+  "bonus_info": "Jeton paketini seç bonus kazan ve yeni bölümlerin kilidini aç!",
+  "your_bonuses": "Alacağınız Bonuslar",
+  "premium_account": "Premium Hesap",
+  "more_fun": "Daha Fazla Eğlence",
+  "no_ads": "Ücretsiz",
+  "more_likes": "Daha Fazla Beğeni",
+  "see_all_packages": "Tüm Jetonları Gör"
+}
