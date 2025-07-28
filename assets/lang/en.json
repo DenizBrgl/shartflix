@@ -35,5 +35,33 @@
   "more_fun": "More Fun",
   "no_ads": "No Ads",
   "more_likes": "More Likes",
-  "see_all_packages": "See All Tokens"
+  "see_all_packages": "See All Tokens",
+
+  "no_connection": "No internet connection.",
+  "passwords_not_match": "Passwords do not match.",
+  "accept_terms_warning": "Please accept the user agreement.",
+  "name_empty_error": "Full Name cannot be empty.",
+  "email_empty_error": "Email cannot be empty.",
+  "invalid_email_error": "Invalid email format.",
+  "password_empty_error": "Password cannot be empty.",
+  "password_min_length_error": "Password must be at least 6 characters.",
+  "confirm_password_empty_error": "Confirm password cannot be empty.",
+  "register_success": "Registration successful! You can now log in.",
+  "register_title": "Welcome",
+  "register_description": "Create your account to start your Shartflix experience.",
+
+  "terms_part1": "I have read and ",
+  "terms_part2": "accept the user agreement.",
+  "terms_part3": " Please proceed by reading this agreement.",
+
+  "terms_title": "User Agreement",
+  "terms_conditions_heading": "Terms and Conditions",
+  "terms_content": "By using this application, you agree to the following terms. Your data will be kept confidential and will not be used for purposes other than its intended use. For detailed information and all terms, please contact the application developer.",
+  "terms_continue_prompt": "Please click the button below to continue.",
+  "accept_terms_button": "I Accept",
+
+  "no_liked_movies": "No liked movies yet.",
+  "profile_load_error": "An error occurred while loading profile: {0}",
+  "profile_loading_info": "Loading profile information...",
+  "upload_photo_description": "Resources out incentivize relaxation floor loss cc."
 }

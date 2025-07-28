@@ -6,13 +6,15 @@ class SocialButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment:
+          MainAxisAlignment
+              .center, // ✅ Burası değişti: Butonları merkeze toplar
       children: const [
-        SocialButton(icon: Icons.g_mobiledata),
-        SizedBox(width: 16),
-        SocialButton(icon: Icons.apple),
-        SizedBox(width: 16),
-        SocialButton(icon: Icons.facebook),
+        SocialButton(icon: Icons.g_mobiledata), // Google icon
+        SizedBox(width: 6), // ✅ Bu boşluklar artık daha etkili olacak
+        SocialButton(icon: Icons.apple), // Apple icon
+        SizedBox(width: 6),
+        SocialButton(icon: Icons.facebook), // Facebook icon
       ],
     );
   }
@@ -25,10 +27,19 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: Colors.grey.shade900,
-      radius: 22,
-      child: Icon(icon, color: Colors.white),
+    return Container(
+      margin: const EdgeInsets.all(3),
+      width: 55,
+      height: 55,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(
+          color: const Color.fromARGB(76, 255, 255, 255),
+          width: 1,
+        ),
+      ),
+      child: Center(child: Icon(icon, color: Colors.white, size: 30)),
     );
   }
 }

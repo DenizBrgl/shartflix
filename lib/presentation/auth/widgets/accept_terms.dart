@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:shartflix/presentation/auth/widgets/custom_elevated_button.dart';
+import 'package:shartflix/core/theme/app_colors.dart';
+import 'package:shartflix/core/theme/app_styles.dart';
 
 class TermsPage extends StatelessWidget {
   const TermsPage({super.key});
@@ -7,10 +11,11 @@ class TermsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Kullanıcı Sözleşmesi"),
-        backgroundColor: Colors.black,
+        title: Text("terms_title".tr()),
+        backgroundColor: AppColors.black,
+        foregroundColor: AppColors.white,
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.black,
       body: Center(
         child: Padding(
           padding: const EdgeInsetsDirectional.symmetric(
@@ -19,28 +24,25 @@ class TermsPage extends StatelessWidget {
           ),
           child: Center(
             child: ListView(
-              children: const [
+              children: [
                 Center(
                   child: Text(
-                    "Şartlar ve Koşullar",
-                    style: TextStyle(
-                      color: Colors.white,
+                    "terms_conditions_heading".tr(),
+                    style: AppStyles.montserratBold.copyWith(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Text(
-                  "Bu uygulamayı kullanarak aşağıdaki şartları kabul etmiş olursunuz. "
-                  "Verileriniz gizli tutulur. Kullanım amacı dışında kullanılmaz. "
-                  "Detaylı bilgi ve tüm şartlar için lütfen uygulama geliştiricisi ile iletişime geçiniz.",
-                  style: TextStyle(color: Colors.white70),
+                  "terms_content".tr(),
+                  style: AppStyles.bodyText1.copyWith(color: AppColors.white70),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Text(
-                  "Devam etmek için lütfen aşağıdaki butona tıklayın.",
-                  style: TextStyle(color: Colors.white),
+                  "terms_continue_prompt".tr(),
+                  style: AppStyles.bodyText1.copyWith(color: AppColors.white),
                 ),
               ],
             ),
@@ -49,10 +51,11 @@ class TermsPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ElevatedButton(
+        child: CustomElevatedButton(
+          textKey: "accept_terms_button",
           onPressed: () => Navigator.pop(context, true),
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-          child: const Text("Kabul Ediyorum"),
+          backgroundColor: AppColors.primary,
+          textColor: AppColors.white,
         ),
       ),
     );

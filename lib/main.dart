@@ -1,7 +1,10 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shartflix/presentation/home/bloc/movie_bloc.dart';
+import 'package:shartflix/presentation/main/main_screen.dart';
+import 'package:shartflix/presentation/profile/bloc/profile_bloc.dart';
 import 'core/utils/app_bloc_observer.dart';
 import 'injection_container.dart' as di;
 import 'presentation/auth/bloc/auth_bloc.dart';
@@ -14,26 +17,31 @@ void main() async {
   await di.init(); // GetIt bağımlılık enjeksiyonu
 
   Bloc.observer = AppBlocObserver(); // Bloc event logger
-
+  final storage = FlutterSecureStorage();
+  final token = await storage.read(key: 'auth_token');
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('tr')],
       path: 'assets/lang', // assets/lang/en.json, tr.json
       fallbackLocale: const Locale('en'),
-      child: const ShartflixApp(),
+      child: ShartflixApp(isLoggedIn: token != null),
     ),
   );
 }
 
 class ShartflixApp extends StatelessWidget {
-  const ShartflixApp({super.key});
+  final bool isLoggedIn;
 
+  const ShartflixApp({super.key, required this.isLoggedIn});
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(create: (_) => di.sl<AuthBloc>()),
-        // Diğer Bloc'lar buraya eklenir (HomeBloc, ProfileBloc vs.)
+        BlocProvider<ProfileBloc>(
+          create: (_) => di.sl<ProfileBloc>(),
+        ), // ✅ EKLE
+        BlocProvider<MovieBloc>(create: (_) => di.sl<MovieBloc>()),
       ],
       child: MaterialApp(
         title: 'Shartflix',
@@ -42,7 +50,10 @@ class ShartflixApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        home: LoginPage(), // Geçici başlangıç sayfası
+        home:
+            isLoggedIn
+                ? const MainScreen()
+                : const LoginPage(), // ✅ Burada yönlendir
       ),
     );
   }

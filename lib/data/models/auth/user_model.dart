@@ -1,4 +1,5 @@
 import 'package:shartflix/domain/entities/auth/user.dart';
+import 'package:shartflix/domain/entities/profile/user_entity_profile.dart';
 
 class UserModel {
   final String id;
@@ -27,6 +28,16 @@ class UserModel {
 
   User toEntity() {
     return User(
+      id: id,
+      name: name,
+      email: email,
+      token: token,
+      photoUrl: photoUrl,
+    );
+  }
+
+  UserEntity toUserEntity() {
+    return UserEntity(
       id: id,
       name: name,
       email: email,

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:shartflix/core/error/app_loger.dart';
+import 'package:shartflix/core/error/logger.dart';
 import '../../../core/error/failures.dart';
 import '../../entities/auth/user.dart';
 import '../../repositories/auth_repository.dart';

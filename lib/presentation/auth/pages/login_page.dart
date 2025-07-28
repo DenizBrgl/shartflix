@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shartflix/core/network/network_info.dart';
+import 'package:shartflix/presentation/auth/widgets/custom_elevated_button.dart';
+import 'package:shartflix/presentation/auth/widgets/custom_text_field.dart';
+import 'package:shartflix/presentation/main/main_screen.dart';
 import 'package:shartflix/core/theme/app_colors.dart';
-import 'package:shartflix/injection_container.dart';
 import 'package:shartflix/presentation/auth/bloc/auth_bloc.dart';
 import 'package:shartflix/presentation/auth/bloc/auth_event.dart';
 import 'package:shartflix/presentation/auth/bloc/auth_state.dart';
 import 'package:shartflix/presentation/auth/pages/register_page.dart';
 import 'package:shartflix/presentation/auth/widgets/social_buttons.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:shartflix/core/theme/app_styles.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -61,6 +63,9 @@ class _LoginPageState extends State<LoginPage> {
                   ).showSnackBar(SnackBar(content: Text(state.message)));
                 }
                 if (state is AuthSuccess) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const MainScreen()),
+                  );
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text("login_success".tr()),
@@ -76,7 +81,8 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       "login_title".tr(),
                       style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontFamily: AppStyles.euclidCircularA,
+                        fontWeight: FontWeight.w600,
                         color: Colors.white,
                         fontSize: 20,
                       ),
@@ -85,132 +91,75 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       "login_description".tr(),
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white70),
+                      style: const TextStyle(
+                        fontFamily: AppStyles.euclidCircularA,
+                        color: Colors.white,
+                      ),
                     ),
                     const SizedBox(height: 32),
-
-                    // E-Mail TextField
-                    TextField(
+                    CustomTextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
-                        hintText: "email".tr(),
-                        prefixIcon: const Icon(Icons.email_outlined),
-                        filled: true,
-                        fillColor: Colors.grey.shade900,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                        hintStyle: const TextStyle(color: Colors.white70),
-                      ),
-                      style: const TextStyle(color: Colors.white),
+                      hintKey: "email",
+                      prefixIcon: Icons.email_outlined,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                     const SizedBox(height: 16),
-
-                    // Şifre TextField
-                    TextField(
+                    CustomTextField(
                       controller: _passwordController,
-                      obscureText: _obscurePassword,
-                      decoration: InputDecoration(
-                        hintText: "password".tr(),
-                        prefixIcon: const Icon(Icons.lock_outline),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscurePassword
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: Colors.white70,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _obscurePassword = !_obscurePassword;
-                            });
-                          },
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey.shade900,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                        hintStyle: const TextStyle(color: Colors.white70),
-                      ),
-                      style: const TextStyle(color: Colors.white),
+                      hintKey: "password",
+                      prefixIcon: Icons.lock_outline,
+                      isPassword: true,
+                      obscureTextOverride: _obscurePassword,
+                      onSuffixIconPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
                     ),
                     const SizedBox(height: 8),
-
-                    // Şifremi Unuttum
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "forgot_password".tr(),
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 8),
-
-                    // Giriş Yap Butonu
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "forgot_password".tr(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.white,
+                              decorationThickness: 1.0,
+                            ),
+                            textAlign: TextAlign.left,
                           ),
                         ),
-                        onPressed:
-                            state is AuthLoading
-                                ? null
-                                : () async {
-                                  final hasConnection =
-                                      await sl<INetworkInfo>().isConnected;
-
-                                  if (!hasConnection) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text("no_connection".tr()),
-                                        backgroundColor: Colors.red,
-                                      ),
-                                    );
-                                    return;
-                                  }
-
-                                  final email = _emailController.text.trim();
-                                  final password =
-                                      _passwordController.text.trim();
-
-                                  context.read<AuthBloc>().add(
-                                    LoginRequested(
-                                      email: email,
-                                      password: password,
-                                    ),
-                                  );
-                                },
-                        child:
-                            state is AuthLoading
-                                ? const CircularProgressIndicator(
-                                  color: AppColors.white,
-                                )
-                                : Text("login".tr()),
-                      ),
+                      ],
                     ),
-
+                    const SizedBox(height: 8),
+                    CustomElevatedButton(
+                      textKey: "login",
+                      onPressed: () async {
+                        final email = _emailController.text.trim();
+                        final password = _passwordController.text.trim();
+                        context.read<AuthBloc>().add(
+                          LoginRequested(email: email, password: password),
+                        );
+                      },
+                      isLoading: state is AuthLoading,
+                    ),
                     const SizedBox(height: 24),
                     const SocialButtons(),
                     const SizedBox(height: 24),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "no_account".tr(),
-                          style: const TextStyle(color: Colors.white70),
+                          style: const TextStyle(
+                            fontFamily: AppStyles.euclidCircularA,
+                            color: Colors.white70,
+                          ),
                         ),
                         TextButton(
                           onPressed: () {
@@ -224,8 +173,8 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             "sign_up".tr(),
                             style: const TextStyle(
-                              fontWeight: FontWeight.bold,
                               color: Colors.white,
+                              fontFamily: AppStyles.euclidCircularA,
                             ),
                           ),
                         ),

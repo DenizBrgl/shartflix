@@ -1,5 +1,5 @@
 {
-  "login_title": "Hoşgeldiniz",
+  "login_title": "Merhabalar",
   "login_description": "Shartflix'e hoş geldiniz! Şimdi keşfetmeye başlayın.",
   "email": "E-Posta",
   "password": "Şifre",
@@ -8,7 +8,7 @@
   "no_account": "Bir hesabın yok mu?",
   "sign_up": "Kayıt Ol",
 
-  "signup_title": "Merhabalar",
+  "signup_title": "Hoşgeldiniz",
   "signup_button": "Şimdi Kaydol",
   "name": "Ad Soyad",
   "confirm_password": "Şifre Tekrar",
@@ -35,5 +35,33 @@
   "more_fun": "Daha Fazla Eğlence",
   "no_ads": "Ücretsiz",
   "more_likes": "Daha Fazla Beğeni",
-  "see_all_packages": "Tüm Jetonları Gör"
+  "see_all_packages": "Tüm Jetonları Gör",
+
+  "no_connection": "İnternet bağlantısı yok.",
+  "passwords_not_match": "Şifreler eşleşmiyor.",
+  "accept_terms_warning": "Lütfen kullanıcı sözleşmesini kabul edin.",
+  "name_empty_error": "Ad Soyad boş bırakılamaz.",
+  "email_empty_error": "E-Posta boş bırakılamaz.",
+  "invalid_email_error": "Geçersiz E-Posta formatı.",
+  "password_empty_error": "Şifre boş bırakılamaz.",
+  "password_min_length_error": "Şifre en az 6 karakter olmalıdır.",
+  "confirm_password_empty_error": "Şifre tekrarı boş bırakılamaz.",
+  "register_success": "Kayıt başarılı! Giriş yapabilirsiniz.",
+  "register_title": "Merhabalar",
+  "register_description": "Hesabınızı oluşturarak Shartflix deneyimine başlayın.",
+
+  "terms_part1": "Kullanıcı sözleşmesini ",
+  "terms_part2": "okudum ve kabul ediyorum.",
+  "terms_part3": " Bu sözleşmeyi okuyarak devam ediniz lütfen.",
+
+  "terms_title": "Kullanıcı Sözleşmesi",
+  "terms_conditions_heading": "Şartlar ve Koşullar",
+  "terms_content": "Bu uygulamayı kullanarak aşağıdaki şartları kabul etmiş olursunuz. Verileriniz gizli tutulur. Kullanım amacı dışında kullanılmaz. Detaylı bilgi ve tüm şartlar için lütfen uygulama geliştiricisi ile iletişime geçiniz.",
+  "terms_continue_prompt": "Devam etmek için lütfen aşağıdaki butona tıklayın.",
+  "accept_terms_button": "Kabul Ediyorum",
+
+  "no_liked_movies": "Henüz beğenilen filminiz yok.",
+  "profile_load_error": "Profil yüklenirken bir hata oluştu: {0}",
+  "profile_loading_info": "Profil bilgileri yükleniyor...",
+  "upload_photo_description": "Profiliniz için fotoğraf yükleyin. Bu, diğer kullanıcılarla etkileşimde bulunmanızı kolaylaştırır."
 }
